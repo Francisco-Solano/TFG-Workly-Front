@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { useAuth } from "../context/AuthContext";
 
 interface Props {
   onClose: () => void;
@@ -23,11 +21,10 @@ const CreateProjectModal: React.FC<Props> = ({
   onCreate,
   editingProject,
 }) => {
-  const { user } = useAuth();
-  const token = user?.token;
+
 
   const [title, setTitle] = useState(editingProject?.title || "");
-  const [collaborators, setCollaborators] = useState<Collaborator[]>([]);
+  const [collaborators] = useState<Collaborator[]>([]);
 
 
 

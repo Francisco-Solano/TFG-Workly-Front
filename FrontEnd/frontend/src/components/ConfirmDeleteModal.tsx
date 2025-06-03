@@ -2,13 +2,16 @@
 import React from 'react';
 
 interface ConfirmDeleteModalProps {
-  collaboratorEmail: string;
+  projectTitle: string;
   onConfirm: () => void;
   onCancel: () => void;
 }
 
+
+
+
+
 const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
-  collaboratorEmail,
   onConfirm,
   onCancel,
 }) => {
@@ -18,7 +21,7 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Eliminar colaborador</h1>
           <p className="text-gray-700 text-lg mb-6">
-            ¿Deseas eliminar al colaborador <strong>{collaboratorEmail}</strong>?
+            ¿Deseas eliminar al colaborador?
           </p>
         </div>
         <div className="flex justify-between">

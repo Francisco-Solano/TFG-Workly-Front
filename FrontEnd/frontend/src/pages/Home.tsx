@@ -24,7 +24,7 @@ const Home = () => {
 
   const { user } = useAuth();
   const token = user?.token;
-  const navigate = useNavigate();
+  
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -207,6 +207,7 @@ const Home = () => {
       {projectToDelete && (
         <ConfirmDeleteModal
           projectTitle={projectToDelete.title}
+          
           onCancel={() => setProjectToDelete(undefined)}
           onConfirm={async () => {
             try {
