@@ -20,7 +20,7 @@ function App() {
   const { user } = useAuth(); // ✅ accede al usuario autenticado
 
   return (
-    <BrowserRouter basename="/TFG-Workly">
+    <BrowserRouter basename="/TFG-Workly-Front">
       <Routes>
         {/* Redirige "/" según estado de autenticación */}
         <Route
