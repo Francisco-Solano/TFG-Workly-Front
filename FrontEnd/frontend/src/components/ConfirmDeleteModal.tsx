@@ -3,6 +3,7 @@ import React from 'react';
 
 interface ConfirmDeleteModalProps {
   projectTitle: string;
+  collaboratorEmail:string,
   onConfirm: () => void;
   onCancel: () => void;
 }

@@ -763,6 +763,7 @@ return (
 
         {collaboratorToDelete && (
           <ConfirmDeleteModal
+            projectTitle={project.title}
             collaboratorEmail={collaboratorToDelete.email}
             onConfirm={() => handleRemoveCollaborator(collaboratorToDelete.id)}
             onCancel={() => setCollaboratorToDelete(null)}

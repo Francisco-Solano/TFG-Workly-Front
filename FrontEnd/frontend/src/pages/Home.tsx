@@ -207,7 +207,7 @@ const Home = () => {
       {projectToDelete && (
         <ConfirmDeleteModal
           projectTitle={projectToDelete.title}
-          
+          collaboratorEmail=''
           onCancel={() => setProjectToDelete(undefined)}
           onConfirm={async () => {
             try {
