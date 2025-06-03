@@ -1,36 +1,32 @@
-name: Build and Test
+name: Build Frontend
 
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
-  build:
+  build-frontend:
     runs-on: ubuntu-latest
 
-   
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-
-      - name: Set up Node.js and Install dependencies for Frontend
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20' # usa Node 20 si usas react-router-dom v7+
 
-      - name: Install dependencies for Frontend
+      - name: Install dependencies
         run: |
           cd FrontEnd/frontend
           npm install
 
-      - name: Build Frontend
+      - name: Build project
         run: |
           cd FrontEnd/frontend
           npm run build
-
-      
