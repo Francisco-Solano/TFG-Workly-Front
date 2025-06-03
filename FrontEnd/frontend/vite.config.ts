@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/TFG-Workly/',
+  base: '/TFG-Workly-Front/',
   css: {
     preprocessorOptions: {
       scss: {
