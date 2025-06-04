@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <title>Redireccionando...</title>
-    <script>
-      const base = "/TFG-Workly-Front/";
+    <script type="text/javascript">
+      const base = "/TFG-Workly-Front";
 
-      // Solo redirige si no estamos ya en la base correcta
-      if (!location.pathname.startsWith(base)) {
-        const newPath = base + location.pathname + location.search + location.hash;
-        location.replace(newPath);
+      const path = window.location.pathname.replace(base, "");
+      const search = window.location.search || "";
+      const hash = window.location.hash || "";
+
+      const target = base + "/index.html" + search + hash;
+
+      // Solo redirige si NO estamos ya en index.html
+      if (!window.location.pathname.endsWith("index.html")) {
+        window.location.replace(target);
       }
     </script>
   </head>
