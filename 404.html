@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=/" />
+    <meta charset="UTF-8" />
+    <title>Redireccionando...</title>
+    <script>
+      // Asegura que se mantenga la ruta completa al recargar
+      const redirectTo = location.pathname.replace(/^\/?/, "/TFG-Workly-Front/");
+      location.replace(redirectTo + location.search + location.hash);
+    </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    <p>Redirigiendo...</p>
   </body>
 </html>
