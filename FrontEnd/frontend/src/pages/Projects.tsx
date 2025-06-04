@@ -6,6 +6,8 @@ import CardColumn from '../components/CardColumn';
 import TaskDetailModal from '../components/TaskDetailModal';
 import AddCollaboratorModal from '../components/AddCollaboratorModal';
 import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
+import { API_URL } from "../config/api";
+
 
 
 import {
@@ -143,7 +145,7 @@ const Projects: React.FC<ProjectDetailProps> = ({ projectId }) => {
       for (let i = 0; i < newOrder.length; i++) {
         const c = newOrder[i];
         await fetch(
-          `http://localhost:8080/api/v1/tablas/${c.id}/posicion?posicion=${i}`,
+          `${API_URL}/api/v1/tablas/${c.id}/posicion?posicion=${i}`,
           {
             method: 'PATCH',
             headers: { Authorization: `Bearer ${token}` },
@@ -205,7 +207,7 @@ if (over.data.current?.type === 'task') {
         for (let i = 0; i < updatedColumn.tasks.length; i++) {
           const t = updatedColumn.tasks[i];
           await fetch(
-            `http://localhost:8080/api/v1/tareas/${t.id}/posicion?posicion=${i}`,
+            `${API_URL}/api/v1/tareas/${t.id}/posicion?posicion=${i}`,
             {
               method: 'PATCH',
               headers: { Authorization: `Bearer ${token}` },
@@ -249,7 +251,7 @@ if (over.data.current?.type === 'task') {
 
     // Avisamos al backend del cambio de columna
     await fetch(
-      `http://localhost:8080/api/v1/tareas/${taskId}/mover/${toCardId}`,
+      `${API_URL}/api/v1/tareas/${taskId}/mover/${toCardId}`,
       {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
@@ -262,7 +264,7 @@ if (over.data.current?.type === 'task') {
     for (let i = 0; i < destinoColumn.tasks.length; i++) {
       const t = destinoColumn.tasks[i];
       await fetch(
-        `http://localhost:8080/api/v1/tareas/${t.id}/posicion?posicion=${i}`,
+        `${API_URL}/api/v1/tareas/${t.id}/posicion?posicion=${i}`,
         {
           method: 'PATCH',
           headers: { Authorization: `Bearer ${token}` },
@@ -279,7 +281,7 @@ if (over.data.current?.type === 'task') {
     if (!token) return;
     try {
       const res = await fetch(
-        `http://localhost:8080/api/v1/proyectos/${projectId}/colaboradores/${userId}`,
+        `${API_URL}/api/v1/proyectos/${projectId}/colaboradores/${userId}`,
         {
           method: 'DELETE',
           headers: { Authorization: `Bearer ${token}` },
@@ -312,7 +314,7 @@ if (over.data.current?.type === 'task') {
     if (!token) return alert('No autenticado');
     try {
       const userRes = await fetch(
-        `http://localhost:8080/api/v1/usuarios/email/${encodeURIComponent(email)}`,
+        `${API_URL}/api/v1/usuarios/email/${encodeURIComponent(email)}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (!userRes.ok) throw new Error('Usuario no encontrado');
@@ -325,7 +327,7 @@ if (over.data.current?.type === 'task') {
         return alert('Este usuario ya es colaborador del proyecto.');
       }
       const linkRes = await fetch(
-        `http://localhost:8080/api/v1/proyectos/${projectId}/colaboradores?usuarioId=${usr.id}&rol=ROLE_USER`,
+        `${API_URL}/api/v1/proyectos/${projectId}/colaboradores?usuarioId=${usr.id}&rol=ROLE_USER`,
         {
           method: 'POST',
           headers: { Authorization: `Bearer ${token}` },
@@ -348,7 +350,7 @@ if (over.data.current?.type === 'task') {
   const handleAddCard = async () => {
     if (!newCardTitle.trim()) return;
     try {
-      const res = await fetch('http://localhost:8080/api/v1/tablas/crear', {
+      const res = await fetch(`${API_URL}/api/v1/tablas/crear`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -382,7 +384,7 @@ if (over.data.current?.type === 'task') {
     const tok = tokenRaw ? JSON.parse(tokenRaw).token : null;
     if (!tok) return console.error('Token no encontrado');
     try {
-      const res = await fetch('http://localhost:8080/api/v1/tareas/crear', {
+      const res = await fetch(`${API_URL}/api/v1/tareas/crear`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -420,7 +422,7 @@ if (over.data.current?.type === 'task') {
   // ────────────────────────────────────────────────────────────
   const handleUpdateCardTitle = async (cardId: number, newTitle: string) => {
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/tablas/${cardId}`, {
+      const res = await fetch(`${API_URL}/api/v1/tablas/${cardId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -447,7 +449,7 @@ if (over.data.current?.type === 'task') {
   const handleDeleteCard = async (cardId: number) => {
     if (!window.confirm('¿Eliminar esta tabla?')) return;
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/tablas/${cardId}`, {
+      const res = await fetch(`${API_URL}/api/v1/tablas/${cardId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -474,7 +476,7 @@ if (over.data.current?.type === 'task') {
       return;
     }
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/tareas/${task.id}`, {
+      const res = await fetch(`${API_URL}/api/v1/tareas/${task.id}`, {
         headers: { Authorization: `Bearer ${tok}` },
       });
       if (!res.ok) throw new Error(`Error ${res.status} al cargar tarea`);
@@ -531,7 +533,7 @@ if (over.data.current?.type === 'task') {
   // ────────────────────────────────────────────────────────────
   const handleDeleteTask = async (taskId: number) => {
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/tareas/${taskId}`, {
+      const res = await fetch(`${API_URL}/api/v1/tareas/${taskId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -557,7 +559,7 @@ if (over.data.current?.type === 'task') {
     if (!token) return;
     try {
       const res = await fetch(
-        `http://localhost:8080/api/v1/proyectos/${projectId}/colaboradores`,
+        `${API_URL}/api/v1/proyectos/${projectId}/colaboradores`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (!res.ok) throw new Error('Error listando colaboradores');
@@ -585,7 +587,7 @@ if (over.data.current?.type === 'task') {
       try {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:8080/api/v1/tablas/proyecto/${projectId}`,
+          `${API_URL}/api/v1/tablas/proyecto/${projectId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (!res.ok) throw new Error();
@@ -619,7 +621,7 @@ if (over.data.current?.type === 'task') {
         setCards(formateadas);
        // Cargar también el nombre real del proyecto
 const projectRes = await fetch(
-  `http://localhost:8080/api/v1/proyectos/${projectId}`,
+  `${API_URL}/api/v1/proyectos/${projectId}`,
   { headers: { Authorization: `Bearer ${token}` } }
 );
 if (!projectRes.ok) throw new Error("No se pudo cargar el proyecto");

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { API_URL } from "../config/api";
+
 
 interface Subtask {
   id: number;
@@ -82,7 +84,7 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
       body.estado = newCompleted ? 'Completada' : 'Pendiente';
 
       const resTask = await fetch(
-        `http://localhost:8080/api/v1/tareas/${task.id}`,
+        `${API_URL}/api/v1/tareas/${task.id}`,
         {
           method: 'PUT',
           headers: {
@@ -105,7 +107,7 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
     // 2️⃣ Re‐fetch de la tarea completa (para leer subtareas ya “Completada”)
     try {
       const res2 = await fetch(
-        `http://localhost:8080/api/v1/tareas/${task.id}`,
+        `${API_URL}/api/v1/tareas/${task.id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -173,7 +175,7 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
     const nuevoEstadoStr = sub.completed ? 'Incompleta' : 'Completada';
     try {
       const res = await fetch(
-        `http://localhost:8080/api/v1/subtareas/${id}`,
+        `${API_URL}/api/v1/subtareas/${id}`,
         {
           method: 'PUT',
           headers: {
@@ -250,7 +252,7 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
   const handleDeleteSubtask = async (subtaskId: number) => {
   if (!token) return alert('Token no encontrado');
   try {
-    const res = await fetch(`http://localhost:8080/api/v1/subtareas/${subtaskId}`, {
+    const res = await fetch(`${API_URL}/api/v1/subtareas/${subtaskId}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` }
     });
@@ -372,7 +374,7 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
 
     try {
       const res = await fetch(
-        `http://localhost:8080/api/v1/subtareas/tarea/${task.id}`,
+        `${API_URL}/api/v1/subtareas/tarea/${task.id}`,
         {
           method: 'POST',
           headers: {
@@ -425,7 +427,7 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({
                 : 'Por hacer';
 
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/tareas/${task.id}`, {
+      const res = await fetch(`${API_URL}/api/v1/tareas/${task.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
