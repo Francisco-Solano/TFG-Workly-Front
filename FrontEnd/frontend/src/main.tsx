@@ -3,13 +3,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext.tsx";
-console.log("Main.tsx ejecutado");
+import { HashRouter } from "react-router-dom"; // ✅ Importa HashRouter
 
+console.log("Main.tsx ejecutado");
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <HashRouter>
+        <App />
+      </HashRouter>
     </AuthProvider>
   </React.StrictMode>
 );
