@@ -119,7 +119,7 @@ const Projects: React.FC<ProjectDetailProps> = ({ projectId }) => {
   }),
   useSensor(TouchSensor, {
     activationConstraint: {
-      delay: 250,
+      delay: 0,
       tolerance: 5,
     },
   })
@@ -846,6 +846,7 @@ function SortableColumnWrapper({
     transition,
     opacity: isDragging ? 0.8 : 1,
     cursor: 'grab',
+    touchAction: 'none',
   };
 
 
