@@ -7,6 +7,8 @@ import TaskDetailModal from '../components/TaskDetailModal';
 import AddCollaboratorModal from '../components/AddCollaboratorModal';
 import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
 import { API_URL } from "../config/api";
+import { TouchSensor } from '@dnd-kit/core'; // 👈 añade esto al principio
+
 
 
 
@@ -109,13 +111,19 @@ const Projects: React.FC<ProjectDetailProps> = ({ projectId }) => {
   // ────────────────────────────────────────────────────────────
   // Sensores para DnD (por defecto, arranque con PointerSensor)
   // ────────────────────────────────────────────────────────────
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 5, // mínimo 5px de movimiento para considerar un “drag”
-      },
-    })
-  );
+ const sensors = useSensors(
+  useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 5,
+    },
+  }),
+  useSensor(TouchSensor, {
+    activationConstraint: {
+      delay: 250,
+      tolerance: 5,
+    },
+  })
+);
 
 
   // ────────────────────────────────────────────────────────────
