@@ -1,8 +1,11 @@
 // src/services/authService.ts
-const API_URL = "http://localhost:8080/auth";
+import { API_URL } from "../config/api";
+
+const AUTH_URL = `${API_URL}/auth`;
+
 
 export const loginUser = async (email: string, password: string) => {
-  const res = await fetch(`${API_URL}/login`, {
+ const res = await fetch(`${AUTH_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

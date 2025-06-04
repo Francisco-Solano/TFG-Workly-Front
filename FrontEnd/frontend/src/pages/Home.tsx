@@ -6,6 +6,8 @@ import CreateProjectModal from '../components/CreateProjectModal';
 import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from "../config/api";
+
 
 interface Project {
   id: number;
@@ -31,16 +33,15 @@ const Home = () => {
       try {
         if (!token || !user) return;
 
-        const resMios = await fetch("http://localhost:8080/api/v1/proyectos/mios", {
+        const resMios = await fetch(`${API_URL}/api/v1/proyectos/mios`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!resMios.ok) throw new Error("Error al cargar proyectos propios");
         const dataMios = await resMios.json();
 
-        const resCompartidos = await fetch(
-          `http://localhost:8080/api/v1/proyectos/compartidos/${user.id}`,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const resCompartidos = await fetch(`${API_URL}/api/v1/proyectos/compartidos/${user.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+        });
         if (!resCompartidos.ok) throw new Error("Error al cargar proyectos compartidos");
         const dataCompartidos = await resCompartidos.json();
 
@@ -70,7 +71,7 @@ const Home = () => {
   const handleCreateProject = async (title: string) => {
     try {
       if (!token) return;
-      const res = await fetch("http://localhost:8080/api/v1/proyectos/crear", {
+      const res = await fetch(`${API_URL}/api/v1/proyectos/crear`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ nombre: title, visibilidad: false }),
@@ -93,7 +94,7 @@ const Home = () => {
   const handleEditProject = async (id: number, title: string) => {
     try {
       if (!token) return;
-      const res = await fetch(`http://localhost:8080/api/v1/proyectos/${id}`, {
+      const res = await fetch(`${API_URL}/api/v1/proyectos/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ nombre: title, visibilidad: true }),
@@ -212,7 +213,7 @@ const Home = () => {
           onConfirm={async () => {
             try {
               if (!token) return;
-              const res = await fetch(`http://localhost:8080/api/v1/proyectos/${projectToDelete.id}`, {
+              const res = await fetch(`${API_URL}/api/v1/proyectos/${projectToDelete.id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
               });

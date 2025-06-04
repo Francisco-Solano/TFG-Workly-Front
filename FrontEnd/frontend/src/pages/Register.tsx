@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import googleLogo from '../images/Google__G__logo.svg.png'
+import { API_URL } from "../config/api";
+
 
 
 export default function Register() {
@@ -22,7 +24,8 @@ export default function Register() {
   }
 
   try {
-    const response = await fetch("http://localhost:8080/auth/register", {
+    const response = await fetch(`${API_URL}/auth/register`, {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
