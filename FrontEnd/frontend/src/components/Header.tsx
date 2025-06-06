@@ -1,8 +1,5 @@
 import React from 'react';
-
-// 1. Define una interfaz para las props que este componente va a recibir.
-//    En este caso, una función llamada 'onNavigateToCreateProject'
-//    que no toma argumentos y no devuelve nada (void).
+//Header de la aplicacion
 interface HeaderProps {
   onNavigateToCreateProject: () => void;
   searchTerm: string;

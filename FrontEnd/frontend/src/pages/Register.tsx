@@ -1,7 +1,5 @@
-// src/pages/Register.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import googleLogo from '../images/Google__G__logo.svg.png'
 import { API_URL } from "../config/api";
 
 
@@ -60,11 +58,6 @@ export default function Register() {
       <div className="p-10 max-w-md w-full bg-white rounded-lg shadow-lg border border-gray-200">
         <h2 className="text-black text-5xl font-bold mb-6 text-center">Workly</h2>
         <h2 className="text-gray-700 text-xl mb-8 text-center">Registrar Usuario</h2>
-         {/* Botón de Google */}
-      <button className="bg-white border border-gray-300 text-gray-700 py-3 px-6 rounded-md shadow-sm flex items-center justify-center mb-6 w-full hover:bg-gray-50 transition">
-        <img src={googleLogo} alt="Google logo" className="w-5 h-5 mr-3" />
-        <span>Continuar con Google</span>
-      </button>
         <form onSubmit={handleRegister} className="flex flex-col">
           <input
             type="text"

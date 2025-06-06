@@ -1,6 +1,6 @@
-// src/components/ConfirmDeleteModal.tsx
 import React from 'react';
 
+//Vista que se muestra cuando se quiere eliminar un elemento 
 interface ConfirmDeleteModalProps {
   projectTitle: string;
   collaboratorEmail:string,
@@ -20,9 +20,9 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl w-full max-w-sm p-6 animate-fadeIn">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Eliminar colaborador</h1>
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">Eliminar elemento</h1>
           <p className="text-gray-700 text-lg mb-6">
-            ¿Deseas eliminar al colaborador?
+            ¿Deseas eliminar?
           </p>
         </div>
         <div className="flex justify-between">

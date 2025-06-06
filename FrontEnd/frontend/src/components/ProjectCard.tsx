@@ -1,5 +1,5 @@
 import React from "react";
-
+//Componente de la tarjeta 
 interface Project {
   id: number;
   title: string;

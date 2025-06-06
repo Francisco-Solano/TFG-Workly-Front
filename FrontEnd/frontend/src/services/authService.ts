@@ -1,4 +1,3 @@
-// src/services/authService.ts
 import { API_URL } from "../config/api";
 
 const AUTH_URL = `${API_URL}/auth`;
@@ -19,7 +18,7 @@ export const loginUser = async (email: string, password: string) => {
 
   const data = await res.json();
 
-  // Ya tienes el id en data.id, no necesitas llamada extra
+
   return {
     id: data.id,
     email: data.email,

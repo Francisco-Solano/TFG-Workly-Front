@@ -1,4 +1,3 @@
-// src/components/CardColumn.tsx
 import React, { useState } from 'react';
 import { useDroppable, useDraggable } from '@dnd-kit/core';
 import TaskItem from './TaskItem';
@@ -26,10 +25,10 @@ export default function CardColumn({
   const [showOptions, setShowOptions] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // 1️⃣ Configuramos este contenedor como “droppable” para recibir tareas
+  //Configuramos este contenedor como “droppable” para recibir tareas
   const { setNodeRef: setDroppableRef, isOver } = useDroppable({
     id: String(card.id),
-    data: { type: 'taskContainer' }, // marca que este droppable es contenedor de tareas
+    data: { type: 'taskContainer' }, //este droppable es contenedor de tareas
   });
 
   const handleAdd = () => {
@@ -52,7 +51,7 @@ export default function CardColumn({
         setTempTitle(card.title);
       }}
     >
-      {/* ─── Botón “⋮” para editar/ eliminar columna ─── */}
+      {/* ─── Botón para editar/ eliminar columna ─── */}
       {showOptions && (
         <div className="absolute top-2 right-2 z-20">
           <button
@@ -124,7 +123,7 @@ export default function CardColumn({
         ))}
       </div>
 
-      {/* ─── Botón “+ Añadir tarea” ─── */}
+      {/* ─── Botón de añadir tarea ─── */}
       {showTaskInput ? (
         <div className="flex flex-col space-y-2">
           <input
@@ -149,7 +148,7 @@ export default function CardColumn({
   );
 }
 
-// Componente auxiliar para cada “task” – es un “draggable”
+// Componente auxiliar para cada que cada tarea sea un draggable
 interface DraggableTaskProps {
   task: TaskType;
   cardId: number;
@@ -157,7 +156,7 @@ interface DraggableTaskProps {
 }
 
 function DraggableTask({ task, cardId, onClick }: DraggableTaskProps) {
-  // 2️⃣ Configuramos este elemento como “draggable”
+  //Configuramos este elemento como draggable
   const {
     attributes,
     listeners,

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import { loginUser } from "../services/authService";
-import googleLogo from '../images/Google__G__logo.svg.png'
+
 
 export default function Login() {
   const { login } = useAuth();
@@ -28,12 +28,7 @@ export default function Login() {
       <h1 className="text-black text-5xl font-bold mb-10 tracking-wider">Workly</h1>
       <p className="text-gray-700 text-xl mb-8">Regístrate o inicia sesión</p>
 
-      {/* Botón de Google */}
-      <button className="bg-white border border-gray-300 text-gray-700 py-3 px-6 rounded-md shadow-sm flex items-center justify-center mb-6 w-3/4 hover:bg-gray-50 transition">
-        <img src={googleLogo} alt="Google logo" className="w-5 h-5 mr-3" />
-        <span>Iniciar sesión con Google</span>
-      </button>
-
+    
       <form onSubmit={handleLogin} className="w-3/4 flex flex-col items-center">
         <input
           type="email"

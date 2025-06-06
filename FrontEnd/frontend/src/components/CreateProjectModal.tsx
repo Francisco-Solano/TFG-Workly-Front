@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+//Vista para cuando se crea un proyecto
 interface Props {
   onClose: () => void;
   onCreate: (

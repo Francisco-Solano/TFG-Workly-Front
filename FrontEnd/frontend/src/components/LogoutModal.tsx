@@ -1,6 +1,6 @@
 // src/components/LogoutModal.tsx
 import React from "react";
-
+//Vista para cuando se va a cerrar sesion
 interface Props {
   onConfirm: () => void;
   onCancel: () => void;

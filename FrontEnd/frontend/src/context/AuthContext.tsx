@@ -1,4 +1,3 @@
-// src/context/AuthContext.tsx
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface User {
@@ -30,7 +29,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
 
   const logout = () => {
-  localStorage.removeItem("user"); // No "token", porque guardaste "user"
+  localStorage.removeItem("user"); 
   setUser(null);
 };
 

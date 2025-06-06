@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { API_URL } from "../config/api";
 
-
+//Vista para editar la tarea
 interface Subtask {
   id: number;
   title: string;

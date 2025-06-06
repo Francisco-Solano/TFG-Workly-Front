@@ -1,10 +1,10 @@
-// src/components/Sidebar.tsx (Corregido para que el contenido solo tenga pl-12 en móvil-overlay)
 import React, { useState } from "react";
 import LogoutModal from "./LogoutModal";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
+//Componente de la barra lateral
 const Sidebar: React.FC = () => {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

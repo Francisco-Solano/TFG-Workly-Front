@@ -1,4 +1,3 @@
-// src/components/AddCollaboratorModal.tsx
 import React, { useState } from "react";
 
 interface Collaborator {
