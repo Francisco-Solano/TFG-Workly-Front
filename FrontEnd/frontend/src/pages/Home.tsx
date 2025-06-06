@@ -127,7 +127,9 @@ const Home = () => {
   return (
     <div className="flex min-h-screen bg-gray-100 font-sans">
       {/* Sidebar colapsable coloca fuera mobile */}
+      <div className="sticky left-0 top-0 z-30 shrink-0">
       <Sidebar />
+      </div>
 
       {/* Contenedor principal */}
       <div className="flex flex-col flex-1 relative overflow-auto">

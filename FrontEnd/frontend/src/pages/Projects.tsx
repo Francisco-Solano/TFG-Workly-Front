@@ -134,10 +134,8 @@ const Projects: React.FC<ProjectDetailProps> = ({ projectId }) => {
     if (!over) return;
 
 
-    // -----------------
-    // 1) ¿Se estaba arrastrando una COLUMNA?
-    //    - En `active.data.current.type` guardamos si es "column" o "task"
-    // -----------------
+  
+    // En active.data.current.type guardamos si es "column" o "task"
     const type = active.data.current?.type as 'column' | 'task';
     if (type === 'column') {
       const oldIndex = cards.findIndex((c) => String(c.id) === active.id);
@@ -149,7 +147,7 @@ const Projects: React.FC<ProjectDetailProps> = ({ projectId }) => {
       setCards(newOrder);
 
 
-      // (Opcional: avisar a backend del nuevo orden de columnas)
+      
       for (let i = 0; i < newOrder.length; i++) {
         const c = newOrder[i];
         await fetch(
@@ -164,12 +162,7 @@ const Projects: React.FC<ProjectDetailProps> = ({ projectId }) => {
     }
 
 
-    // -----------------
-    // 2) Se estaba arrastrando una TAREA
-    //    - Id de la tarea: active.id (string con el número)
-    //    - fromCardId: lo guardamos en active.data.current.fromCol
-    //    - toCardId: lo obtenemos de over.id (será el id de la columna destino)
-    // -----------------
+   
     const taskId = Number(active.id);
     const fromCardId = Number(active.data.current?.fromCol);
     let toCardId: number;
@@ -179,7 +172,7 @@ if (over.data.current?.type === 'task') {
 } else if (over.data.current?.type === 'column') {
   toCardId = Number(over.id);
 } else {
-  // fallback: si soltó en fondo de columna (sin data), asumimos ID es columna
+  //si soltó en fondo de columna (sin data), asumimos ID es columna
   toCardId = Number(over.id);
 }
 
@@ -191,7 +184,7 @@ if (over.data.current?.type === 'task') {
     }
 
 
-    // 2.a) Si queda en la misma columna, reordenamos esa columna localmente
+    //Si queda en la misma columna, reordenamos esa columna localmente
     if (fromCardId === toCardId) {
       setCards((prev) =>
         prev.map((card) => {
@@ -227,7 +220,7 @@ if (over.data.current?.type === 'task') {
     }
 
 
-    // 2.b) Si cambia de columna:
+
     let taskToMove: Task | undefined;
 
 
@@ -283,7 +276,7 @@ if (over.data.current?.type === 'task') {
 
 
   // ────────────────────────────────────────────────────────────
-  // Método para eliminar colaborador (sin prompt nativo)
+  // Método para eliminar colaborador 
   // ────────────────────────────────────────────────────────────
   const handleRemoveCollaborator = async (userId: number) => {
     if (!token) return;
