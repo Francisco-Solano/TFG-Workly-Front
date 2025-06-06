@@ -130,7 +130,6 @@ const Home = () => {
       <div className="sticky left-0 top-0 z-30 shrink-0">
       <Sidebar />
       </div>
-
       {/* Contenedor principal */}
       <div className="flex flex-col flex-1 relative overflow-auto">
         {/* Header con espacio left en móvil para evitar solapamiento */}
