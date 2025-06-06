@@ -653,9 +653,8 @@ setProject({
 return (
   <div className="min-h-screen bg-gray-100 font-sans flex">
     {/* Sidebar sticky (permanece visible en scroll horizontal) */}
-    <div className="sticky left-0 top-0 z-30 shrink-0">
       <Sidebar />
-    </div>
+    
 
     {/* Contenido principal con scroll horizontal si necesario */}
     <div className="flex-1 overflow-x-auto">
